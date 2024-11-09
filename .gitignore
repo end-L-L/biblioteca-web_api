@@ -139,4 +139,5 @@ cython_debug/x
 
 # Django Migrations
 core/migrations
-core/__init__.py
+
+biblioteca/migrations
