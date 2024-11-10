@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Bibliotecario, Miembro
 
-# Register your models here.
+admin.site.register(Bibliotecario)
+admin.site.register(Miembro)
