@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from biblioteca.models import Miembro
+from biblioteca.models import Miembro, AppSettings
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -24,3 +24,12 @@ class MiembroSerializer(serializers.ModelSerializer):
     class Meta:
         model = Miembro
         fields = ('id', 'matricula', 'first_name', 'last_name', 'is_active')
+
+class AppSettingsSerializer(serializers.ModelSerializer):
+    dias_prestamo = serializers.IntegerField()
+    cuota_mora = serializers.DecimalField(max_digits=5, decimal_places=2)
+    cuota_extravio = serializers.DecimalField(max_digits=5, decimal_places=2)
+
+    class Meta:
+        model = AppSettings
+        fields = ('dias_prestamo', 'cuota_mora', 'cuota_extravio')

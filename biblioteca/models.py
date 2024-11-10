@@ -19,3 +19,10 @@ class Miembro(models.Model):
 
     def __str__(self):
         return f"{self.first_name} - Matrícula: {self.matricula}"
+    
+# App
+
+class AppSettings(models.Model):
+    dias_prestamo = models.IntegerField(default=3)
+    cuota_mora = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    cuota_extravio = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
