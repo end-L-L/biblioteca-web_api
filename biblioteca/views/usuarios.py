@@ -47,6 +47,11 @@ class BibliotecarioView(APIView):
 
 class MiembroView(APIView):
 
+    def get(self, request):
+        miembros = Miembro.objects.all()
+        miembros_serializer = MiembroSerializer(miembros, many=True)
+        return Response(miembros_serializer.data, status=status.HTTP_200_OK)
+
     def post(self, request):
         user_serializer = MiembroSerializer(data=request.data)
         if user_serializer.is_valid():
@@ -54,7 +59,7 @@ class MiembroView(APIView):
 
             # validar si la matrícula ya existe
             if Miembro.objects.filter(matricula=matricula).exists():
-                return Response({"message": "matricula ya registrada"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"message": "id ya registrado"}, status=status.HTTP_400_BAD_REQUEST)
 
             # crear miembro usando el serializador
             miembro = user_serializer.save()

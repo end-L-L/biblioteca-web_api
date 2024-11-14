@@ -8,6 +8,15 @@ from biblioteca.serializers import AppSettingsSerializer
 
 class SettingsView(APIView):
 
+    def get(self, request):
+        # Obtiene la configuración actual, o crea una nueva si no existe
+        app_settings, created = AppSettings.objects.get_or_create(id=1)
+        
+        # Serializa la configuración
+        serializer = AppSettingsSerializer(app_settings)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def post(self, request):
         # Obtiene la configuración actual, o crea una nueva si no existe
         app_settings, created = AppSettings.objects.get_or_create(id=1)
