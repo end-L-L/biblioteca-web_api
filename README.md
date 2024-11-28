@@ -29,7 +29,7 @@ Biblioteca API
 
 4. Aplicar las Migraciones de Django
 - `$ python manage.py migrate`
-- `$ python manage.py makemigrations hotel`
+- `$ python manage.py makemigrations biblioteca`
 - `$ python manage.py migrate`
 
 6. Crear Superusuario
